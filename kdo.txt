@@ -1,0 +1,31 @@
+const int ZIELONE[4] = {8, 9, 10, 11};
+const int CZERWONE[4] = {0, 1, 2, 3};
+
+void setup() {
+  for (int i = 0; i < 4; i++) {
+    pinMode(ZIELONE[i], OUTPUT);
+    pinMode(CZERWONE[i], OUTPUT);
+  }
+}
+
+void loop() {
+  for (int i = 0; i < 4; i++) {
+    // 1. Gasimy wszystkie zielone i zapalamy wszystkie czerwone
+    digitalWrite(ZIELONE[0], LOW);
+    digitalWrite(ZIELONE[1], LOW);
+    digitalWrite(ZIELONE[2], LOW);
+    digitalWrite(ZIELONE[3], LOW);
+
+    digitalWrite(CZERWONE[0], HIGH);
+    digitalWrite(CZERWONE[1], HIGH);
+    digitalWrite(CZERWONE[2], HIGH);
+    digitalWrite(CZERWONE[3], HIGH);
+
+    // 2. Dla wybranego przejazdu włączamy jego zielone i GASIMY jego czerwone
+    digitalWrite(ZIELONE[i], HIGH);
+    digitalWrite(CZERWONE[i], LOW);
+
+    // Efekt: świeci 1 zielona i 3 czerwone (razem 4 diody)
+    delay(3000);
+  }
+}
